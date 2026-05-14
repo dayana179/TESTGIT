@@ -1,0 +1,63 @@
+﻿@model TESTGIT.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "TESTGIT";
+}
+
+<h2>Validation Demo</h2>
+
+<form asp-action="Index" method="post">
+
+    <!-- Email -->
+    <div>
+        <label>Email:</label><br />
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <!-- Confirm Email -->
+    <div>
+        <label>Confirm Email:</label><br />
+        <input asp-for="ConfirmEmail" />
+        <span asp-validation-for="ConfirmEmail" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <!-- Age -->
+    <div>
+        <label>Age (18-60):</label><br />
+        <input asp-for="Age" />
+        <span asp-validation-for="Age" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <!-- Terms and Conditions -->
+    <div>
+        <input asp-for="AgreeTerms" />
+        <label asp-for="AgreeTerms">I agree to the terms and conditions.</label>
+        <br />
+        <span asp-validation-for="AgreeTerms" style="color:red"></span>
+    </div>
+
+    <br />
+
+    <button type="submit">Register</button>
+
+</form>
+
+<br />
+
+@if (ViewBag.Message != null)
+{
+    <h3 style="color:green">@ViewBag.Message</h3>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
